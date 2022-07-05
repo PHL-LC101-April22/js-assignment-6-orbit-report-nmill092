@@ -13,16 +13,23 @@ table {
  overflow: hidden;
  margin: 12px 0;
  min-width: 300px;
+ border-collapse:collapse;
  background: #dad8d8;
 }
+
+
 
 .header-row {
 	background: #34495E;
 	color: #fff
 }
 
+tr:nth-child(even) { 
+	background-color: #eaeaea;
+}
+
 th, td {
 	text-align: left;
 	margin: 5px 10px;
-	padding: 6px;
+	padding: 10px;
 }
