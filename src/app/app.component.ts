@@ -13,11 +13,11 @@ export class AppComponent {
   displayList: Satellite[];
   isSearching: boolean = false; 
   isNoResults: boolean = false; 
+  testSatellites: Satellite[]; 
 
 	constructor() {
 		this.sourceList = [];
-		this.displayList = [];
-		
+		this.displayList = [];	
 
 		let satellitesUrl = 'https://handlers.education.launchcode.org/static/satellites.json';
 		
@@ -45,7 +45,6 @@ export class AppComponent {
 		this.isNoResults = false; 
 		this.isSearching = false;
 		let matchingSatellites: Satellite[] = [];
-		let message: string; 
 
 		searchTerm = searchTerm.toLowerCase();
 		for(let i=0; i < this.sourceList.length; i++) {
@@ -69,7 +68,6 @@ export class AppComponent {
 		if(matchingSatellites.length < this.sourceList.length) {
 			this.isSearching = true;
 		}
-		 
 	}
 
 	showAll(): void {
