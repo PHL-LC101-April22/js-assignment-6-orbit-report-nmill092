@@ -11,12 +11,16 @@ export class AppComponent {
 
   sourceList: Satellite[];
   displayList: Satellite[];
+  isSearching: boolean = false; 
+  isNoResults: boolean = false; 
 
 	constructor() {
 		this.sourceList = [];
 		this.displayList = [];
-		let satellitesUrl = 'https://handlers.education.launchcode.org/static/satellites.json';
+		
 
+		let satellitesUrl = 'https://handlers.education.launchcode.org/static/satellites.json';
+		
 		window.fetch(satellitesUrl).then(function (response) {
 			response.json().then(function (data) {
 
@@ -37,8 +41,12 @@ export class AppComponent {
 
 	}
 
-	search(searchTerm: string): void {
+	search(searchTerm: string): any {
+		this.isNoResults = false; 
+		this.isSearching = false;
 		let matchingSatellites: Satellite[] = [];
+		let message: string; 
+
 		searchTerm = searchTerm.toLowerCase();
 		for(let i=0; i < this.sourceList.length; i++) {
 			let name = this.sourceList[i].name.toLowerCase();
@@ -47,10 +55,27 @@ export class AppComponent {
 				matchingSatellites.push(this.sourceList[i]);
 			}
 		}
+			
 		// assign this.displayList to be the array of matching satellites
 		// this will cause Angular to re-make the table, but now only containing matches
 		this.displayList = matchingSatellites;
+		
+
+		if(matchingSatellites.length == 0) { 
+		    this.isNoResults = true;		
+			this.isSearching = true;	
+		} 
+
+		if(matchingSatellites.length < this.sourceList.length) {
+			this.isSearching = true;
+		}
+		 
 	}
 
+	showAll(): void {
+		this.isNoResults = false; 
+		this.displayList = this.sourceList; 
+		this.isSearching = false; 
+	}
 
 }

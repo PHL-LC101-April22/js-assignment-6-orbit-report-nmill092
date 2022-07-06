@@ -13,6 +13,9 @@
         <td> {{satellite.orbitType}} </td>
         <td> {{satellite.launchDate}} </td>
     </tr>
+    <tr *ngIf="isNoResults">
+        <td colspan = 5; style="text-align:center">No results retrieved.</td>
+    </tr>
 </table>
 
 <!-- TODO 2b: use *ngFor to display satellite data in the table -->
