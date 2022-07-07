@@ -12,3 +12,23 @@
 .counts span {
 	float: right;
 }
+
+.counts table {
+	width:100%; 
+	border-collapse:collapse;
+}
+
+.counts th {
+	text-align:left;
+	padding:10px;
+}
+
+.counts tr {
+	border-bottom: 1px solid white;
+}
+
+.counts td {
+	text-align: right;
+	border-bottom:1px solid white;
+	padding:10px;
+}
